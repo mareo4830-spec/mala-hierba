@@ -4,41 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carta | Mala Hierba</title>
-    <!-- Cargamos Tailwind por CDN y configuramos los colores exactos de tu web -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        blood: {
-                            500: '#ef4444',
+                        red: {
+                            500: '#ef4444', 
                             600: '#dc2626',
-                            900: '#7f1d1d'
+                        },
+                        zinc: {
+                            900: '#18181b',
+                            950: '#09090b', 
                         }
                     },
                     fontFamily: {
-                        heading: ['Oswald', 'sans-serif'],
+                        heading: ['Anton', 'sans-serif'], 
                         body: ['Inter', 'sans-serif']
-                    },
-                    boxShadow: {
-                        'blood-glow-lg': '0 0 20px rgba(220, 38, 38, 0.4)'
                     }
                 }
             }
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&display=swap');
         
         body {
+            background-color: #09090b; 
+            color: #a1a1aa; 
             -webkit-font-smoothing: antialiased;
             -webkit-tap-highlight-color: transparent;
         }
         
         ::-webkit-scrollbar { display: none; }
 
-        /* Colores exactos para los alérgenos */
+        /* Colores de alérgenos */
         .al-crustaceos { background-color: #ef4444; } 
         .al-soja { background-color: #65a30d; } 
         .al-pescado { background-color: #60a5fa; } 
@@ -55,198 +56,204 @@
         .al-altramuces { background-color: #92400e; } 
     </style>
 </head>
-<body class="min-h-screen flex flex-col bg-neutral-950 font-body text-neutral-400 pb-24 selection:bg-blood-600 selection:text-white">
+<body class="min-h-screen flex flex-col font-body pb-28 selection:bg-red-500 selection:text-white">
 
-    <!-- CABECERA FIJA (Mismo estilo Navbar.tsx) -->
-    <header class="sticky top-0 z-50 border-b border-neutral-800 bg-neutral-950/80 px-6 py-4 backdrop-blur-md">
+    <!-- CABECERA -->
+    <header class="sticky top-0 z-50 bg-[#09090b]/90 backdrop-blur-md px-4 md:px-6 py-4 md:py-5">
         <div class="mx-auto flex w-full max-w-6xl items-center justify-between">
-            <div>
-                <h1 class="font-heading text-2xl font-bold tracking-wider text-blood-600 uppercase">Mala Hierba</h1>
+            <div class="font-heading text-2xl md:text-3xl tracking-widest leading-none flex items-center">
+                <span class="text-white">MALA</span>
+                <span class="text-red-500">HIERBA</span>
             </div>
-            <button class="flex items-center gap-2 rounded-full bg-blood-600 px-5 py-2 font-heading text-xs font-semibold uppercase tracking-wide text-white shadow-blood-glow-lg transition-all hover:bg-blood-500 active:scale-95">
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-                <span class="hidden md:block">Llamar camarero</span>
+            <button class="text-white hover:text-red-500 transition-colors">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
     </header>
 
     <!-- CONTENIDO DE LA CARTA -->
-    <main class="mx-auto mt-8 flex-grow w-full max-w-6xl space-y-16 p-4 md:p-8">
+    <main class="mx-auto flex-grow w-full max-w-6xl space-y-12 md:space-y-16 p-4 md:p-6 mt-2">
 
         <!-- PICOTEO -->
         <section>
-            <h2 class="mb-8 border-b border-neutral-800 pb-4 font-heading text-3xl md:text-4xl font-semibold uppercase tracking-wide text-white">Picoteo</h2>
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div class="mb-6 md:mb-8 text-center md:text-left">
+                <p class="text-red-500 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-1 md:mb-2">Para arrancar</p>
+                <h2 class="font-heading text-4xl md:text-6xl text-white uppercase tracking-wide">Picoteo</h2>
+            </div>
+            <!-- AQUÍ ESTÁ LA MAGIA: grid-cols-2 en móvil -->
+            <div class="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">
                 
-                <!-- Tarjeta Estilo Lovable (MenuPreview.tsx) -->
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">3,50€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Papas aliñas Hierba Mala</h3>
-                            <p class="mt-3 font-body text-sm leading-relaxed text-neutral-400">Si no quieres culantro, dilo.</p>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Papas aliñas Hierba Mala</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">3,50€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Si no quieres culantro, dilo.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
                     </div>
                 </article>
 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">5,50€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Papas Bravas</h3>
-                            <p class="mt-3 font-body text-sm leading-relaxed text-neutral-400">Patatas con salsa brava casera. Opción más picante disponible.</p>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Papas Bravas</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">5,50€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
-                            <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Patatas con salsa brava casera. Opción más picante disponible.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
+                        <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
                     </div>
                 </article>
 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">6,50€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">NaTXos</h3>
-                            <p class="mt-3 font-body text-sm leading-relaxed text-neutral-400">Con salsa cheddar, frijoles, pulled de carrilleras, crema agria y pico de gallo con piparras.</p>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">NaTXos</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">6,50€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
-                            <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Salsa cheddar, frijoles, pulled, crema agria y pico de gallo.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
+                        <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
                     </div>
                 </article>
 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">6,50€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Pollo Frito Koreano</h3>
-                            <p class="mt-3 font-body text-sm leading-relaxed text-neutral-400">Pollo frito empapao en BBQ coreana y sésamo tostado.</p>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Pollo Koreano</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">6,50€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
-                            <div class="h-3 w-3 rounded-full al-soja" title="Soja"></div>
-                            <div class="h-3 w-3 rounded-full al-sesamo" title="Sésamo"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Pollo frito empapao en BBQ coreana y sésamo tostado.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
+                        <div class="h-3 w-3 rounded-full al-soja" title="Soja"></div>
+                        <div class="h-3 w-3 rounded-full al-sesamo" title="Sésamo"></div>
                     </div>
                 </article>
 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-neutral-700/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">S/M</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Choco frito Mala Hierba</h3>
-                            <p class="mt-3 font-body text-sm leading-relaxed text-neutral-400">Choco frito con picadillo cítrico y selección de mayonesas.</p>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Choco frito</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">- €</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-moluscos" title="Moluscos"></div>
-                            <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
-                            <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Choco frito con picadillo cítrico y mayonesas.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-moluscos" title="Moluscos"></div>
+                        <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
+                        <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
                     </div>
                 </article>
 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">6,50€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Patacón con Carrilleras</h3>
-                            <p class="mt-3 font-body text-sm leading-relaxed text-neutral-400">Con chutney de piña, coronao con cebolla encurtida y culantro.</p>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Patacón con Carrilleras</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">6,50€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Con chutney de piña y cebolla encurtida.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
                     </div>
                 </article>
 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">4,00€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Taco de Cochinita Pibil</h3>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Taco Cochinita</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">4,00€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
-                        </div>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
                     </div>
                 </article>
 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">4,00€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Taco de Costilla</h3>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Taco Costilla</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">4,00€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-soja" title="Soja"></div>
-                            <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
-                        </div>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-soja" title="Soja"></div>
+                        <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
                     </div>
                 </article>
 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">5,00€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Croquetas de Rabo de Toro <span class="text-sm text-neutral-500">(4uds)</span></h3>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Croquetas de Rabo</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">5,00€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
-                            <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
-                            <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Rabo de toro (4uds).</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
+                        <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
+                        <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
                     </div>
                 </article>
 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">5,00€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Croquetas de Atún <span class="text-sm text-neutral-500">(4uds)</span></h3>
-                            <p class="mt-3 font-body text-sm leading-relaxed text-neutral-400">Con wasabi y wakame.</p>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Croquetas Atún</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">5,00€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-pescado" title="Pescado"></div>
-                            <div class="h-3 w-3 rounded-full al-soja" title="Soja"></div>
-                            <div class="h-3 w-3 rounded-full al-sesamo" title="Sésamo"></div>
-                            <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
-                            <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
-                            <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Con wasabi y wakame (4uds).</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-pescado" title="Pescado"></div>
+                        <div class="h-3 w-3 rounded-full al-soja" title="Soja"></div>
+                        <div class="h-3 w-3 rounded-full al-sesamo" title="Sésamo"></div>
+                        <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
+                        <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
+                        <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
                     </div>
                 </article>
 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">5,00€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Croquetas Queso Oveja <span class="text-sm text-neutral-500">(4uds)</span></h3>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Croquetas Oveja</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">5,00€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
-                            <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
-                            <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Queso de oveja (4uds).</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
+                        <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
+                        <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
                     </div>
                 </article>
 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">7,00€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Croquetas Mix <span class="text-sm text-neutral-500">(6uds)</span></h3>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Croquetas Mix</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">7,00€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
-                            <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
-                            <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
-                            <div class="h-3 w-3 rounded-full al-pescado" title="Pescado"></div>
-                            <div class="h-3 w-3 rounded-full al-soja" title="Soja"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Surtido de la casa (6uds).</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
+                        <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
+                        <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
+                        <div class="h-3 w-3 rounded-full al-pescado" title="Pescado"></div>
+                        <div class="h-3 w-3 rounded-full al-soja" title="Soja"></div>
                     </div>
                 </article>
             </div>
@@ -254,68 +261,70 @@
 
         <!-- BURGERS -->
         <section>
-            <h2 class="mb-8 border-b border-neutral-800 pb-4 font-heading text-3xl md:text-4xl font-semibold uppercase tracking-wide text-white">Burgers</h2>
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div class="mb-6 md:mb-8 text-center md:text-left">
+                <p class="text-red-500 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-1 md:mb-2">Para mancharse</p>
+                <h2 class="font-heading text-4xl md:text-6xl text-white uppercase tracking-wide">Burgers</h2>
+            </div>
+            <div class="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">
                 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">11,00€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">The Clash</h3>
-                            <p class="mt-3 font-body text-sm leading-relaxed text-neutral-400">Medallón de ternera, mermelada de bacon, pepinillo y cheddar.</p>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">The Clash</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">11,00€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
-                            <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
-                            <div class="h-3 w-3 rounded-full al-mostaza" title="Mostaza"></div>
-                            <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Medallón ternera, mermelada bacon, pepinillo y cheddar.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
+                        <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
+                        <div class="h-3 w-3 rounded-full al-mostaza" title="Mostaza"></div>
+                        <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
                     </div>
                 </article>
 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">12,00€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Cerdo Trufero</h3>
-                            <p class="mt-3 font-body text-sm leading-relaxed text-neutral-400">Medallón de ternera con papada ibérica y mayonesa de trufa.</p>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Cerdo Trufero</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">12,00€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
-                            <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Ternera, papada ibérica y mayonesa trufa.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
+                        <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
                     </div>
                 </article>
 
-                <!-- Con etiqueta extra -->
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-blood-600/30 bg-neutral-900/30 transition-all hover:border-blood-600/70 active:scale-[0.98]">
-                    <div class="absolute left-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.65rem] uppercase tracking-widest text-white">TOP Ventas</div>
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">14,00€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6 pt-12">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Werbita Pulled Smash (W.P.S)</h3>
-                            <p class="mt-3 font-body text-sm leading-relaxed text-neutral-400">Doble smash de carne, pulled de carrilleras y salsa de queso de la sierra.</p>
+                <article class="relative overflow-hidden flex flex-col justify-between rounded-xl md:rounded-2xl border border-red-500/50 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.4)] active:scale-[0.98]">
+                    <div class="absolute left-0 top-0 bg-red-500 text-white font-bold text-[9px] md:text-[10px] uppercase px-2 py-1 md:px-3 rounded-br-lg z-10">TOP Ventas</div>
+                    <div class="pt-5 md:pt-4">
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Werbita Smash</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">14,00€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
-                            <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Doble smash, pulled carrilleras y salsa queso.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
+                        <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
                     </div>
                 </article>
 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">13,00€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Choco King</h3>
-                            <p class="mt-3 font-body text-sm leading-relaxed text-neutral-400">Hamburguesa de choco con mayonesa acevichada y crujiente de manzana Granny Smith.</p>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Choco King</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">13,00€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
-                            <div class="h-3 w-3 rounded-full al-moluscos" title="Moluscos"></div>
-                            <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
-                            <div class="h-3 w-3 rounded-full al-pescado" title="Pescado"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Choco, mayonesa acevichada y Granny Smith.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
+                        <div class="h-3 w-3 rounded-full al-moluscos" title="Moluscos"></div>
+                        <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
+                        <div class="h-3 w-3 rounded-full al-pescado" title="Pescado"></div>
                     </div>
                 </article>
 
@@ -324,98 +333,101 @@
 
         <!-- BOCATAS -->
         <section>
-            <h2 class="mb-8 border-b border-neutral-800 pb-4 font-heading text-3xl md:text-4xl font-semibold uppercase tracking-wide text-white">Bocatas</h2>
-            <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div class="mb-6 md:mb-8 text-center md:text-left">
+                <p class="text-red-500 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-1 md:mb-2">Clásicos Cañeros</p>
+                <h2 class="font-heading text-4xl md:text-6xl text-white uppercase tracking-wide">Bocatas</h2>
+            </div>
+            <div class="grid grid-cols-2 gap-3 md:gap-6 lg:grid-cols-3">
                 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">9,00€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">El Vegano</h3>
-                            <p class="mt-3 font-body text-sm leading-relaxed text-neutral-400">Berenjenas en miso dulce, tofu marinado, cebolla morada y lima.</p>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">El Vegano</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">9,00€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
-                            <div class="h-3 w-3 rounded-full al-soja" title="Soja"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Berenjenas en miso dulce, tofu, cebolla y lima.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
+                        <div class="h-3 w-3 rounded-full al-soja" title="Soja"></div>
                     </div>
                 </article>
 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">9,00€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Serranito 2.0</h3>
-                            <p class="mt-3 font-body text-sm leading-relaxed text-neutral-400">Lomitos al ras el hanout, pimiento confitado, mayonesa de huevo frito, salsa verde y jamón "crack".</p>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Serranito 2.0</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">9,00€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
-                            <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
-                            <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Lomitos, pimiento, mayonesa huevo frito y jamón.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
+                        <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
+                        <div class="h-3 w-3 rounded-full al-sulfitos" title="Sulfitos"></div>
                     </div>
                 </article>
                 
-                <article class="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-blood-600/50 active:scale-[0.98]">
-                    <span class="absolute right-4 top-4 rounded-full bg-blood-600/90 px-3 py-1 font-heading text-[0.80rem] font-bold uppercase tracking-widest text-white shadow-lg">12,00€</span>
-                    <div class="flex flex-grow flex-col justify-between p-6">
-                        <div>
-                            <h3 class="pr-16 font-heading text-xl font-semibold uppercase tracking-wide text-white">Bocata Cubano / Asiático</h3>
-                            <p class="mt-3 font-body text-sm leading-relaxed text-neutral-400">Costilla deshilachada en salsa hoisin, cheddar fundido, pepinillos, zanahoria, cebolla y mayonesa de sus jugos.</p>
+                <article class="flex flex-col justify-between rounded-xl md:rounded-2xl border border-zinc-800 bg-[#111111] p-4 md:p-6 transition-all duration-300 hover:border-red-500 hover:shadow-[0_0_20px_rgba(239,68,68,0.25)] active:scale-[0.98]">
+                    <div>
+                        <div class="flex flex-col xl:flex-row justify-between items-start mb-3 gap-2">
+                            <h3 class="font-heading text-lg md:text-2xl text-white tracking-wide uppercase leading-tight">Bocata Cubano</h3>
+                            <span class="bg-zinc-800 text-red-500 px-2 py-1 rounded-md font-bold text-[11px] md:text-sm shrink-0 self-start">12,00€</span>
                         </div>
-                        <div class="mt-5 flex gap-2">
-                            <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
-                            <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
-                            <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
-                            <div class="h-3 w-3 rounded-full al-soja" title="Soja"></div>
-                        </div>
+                        <p class="font-body text-xs md:text-sm leading-snug md:leading-relaxed text-zinc-400">Costilla en salsa hoisin, cheddar, pepinillos y zanahoria.</p>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-1.5">
+                        <div class="h-3 w-3 rounded-full al-gluten" title="Gluten"></div>
+                        <div class="h-3 w-3 rounded-full al-leche" title="Leche"></div>
+                        <div class="h-3 w-3 rounded-full al-huevos" title="Huevos"></div>
+                        <div class="h-3 w-3 rounded-full al-soja" title="Soja"></div>
                     </div>
                 </article>
 
             </div>
         </section>
 
-        <!-- LEYENDA ALÉRGENOS (Estilo Panel Lovable) -->
-        <section id="leyenda-alergenos" class="mt-16 overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/30 p-6 md:p-8">
-            <div class="mb-6 flex items-center gap-3 border-b border-neutral-800 pb-4">
-                <svg class="h-6 w-6 text-blood-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                <h2 class="font-heading text-2xl font-semibold uppercase tracking-wide text-white">Alérgenos</h2>
+        <!-- LEYENDA ALÉRGENOS -->
+        <section id="alergenos" class="mt-16 rounded-2xl border border-zinc-800 bg-[#111111] p-6 md:p-8">
+            <div class="mb-6 flex items-center gap-3 border-b border-zinc-800 pb-4">
+                <svg class="h-6 w-6 md:h-8 md:w-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <h2 class="font-heading text-2xl md:text-3xl text-white uppercase tracking-wide">Alérgenos</h2>
             </div>
             
-            <div class="grid grid-cols-2 gap-x-4 gap-y-5 text-sm font-medium text-neutral-400 md:grid-cols-4 lg:grid-cols-7">
-                <div class="flex items-center gap-3"><div class="h-4 w-4 shrink-0 rounded-full al-crustaceos shadow-lg"></div><span class="uppercase">Crustáceos</span></div>
-                <div class="flex items-center gap-3"><div class="h-4 w-4 shrink-0 rounded-full al-soja shadow-lg"></div><span class="uppercase">Soja</span></div>
-                <div class="flex items-center gap-3"><div class="h-4 w-4 shrink-0 rounded-full al-pescado shadow-lg"></div><span class="uppercase">Pescado</span></div>
-                <div class="flex items-center gap-3"><div class="h-4 w-4 shrink-0 rounded-full al-gluten shadow-lg"></div><span class="uppercase">Gluten</span></div>
-                <div class="flex items-center gap-3"><div class="h-4 w-4 shrink-0 rounded-full al-mostaza shadow-lg"></div><span class="uppercase">Mostaza</span></div>
-                <div class="flex items-center gap-3"><div class="h-4 w-4 shrink-0 rounded-full al-huevos shadow-lg"></div><span class="uppercase">Huevos</span></div>
-                <div class="flex items-center gap-3"><div class="h-4 w-4 shrink-0 rounded-full al-cacahuetes shadow-lg"></div><span class="uppercase">Cacahuetes</span></div>
-                <div class="flex items-center gap-3"><div class="h-4 w-4 shrink-0 rounded-full al-frutos shadow-lg"></div><span class="uppercase">Frutos Secos</span></div>
-                <div class="flex items-center gap-3"><div class="h-4 w-4 shrink-0 rounded-full al-apio shadow-lg"></div><span class="uppercase">Apio</span></div>
-                <div class="flex items-center gap-3"><div class="h-4 w-4 shrink-0 rounded-full al-moluscos shadow-lg"></div><span class="uppercase">Moluscos</span></div>
-                <div class="flex items-center gap-3"><div class="h-4 w-4 shrink-0 rounded-full al-leche shadow-lg"></div><span class="uppercase">Leche</span></div>
-                <div class="flex items-center gap-3"><div class="h-4 w-4 shrink-0 rounded-full al-sulfitos shadow-lg"></div><span class="uppercase">Sulfitos</span></div>
-                <div class="flex items-center gap-3"><div class="h-4 w-4 shrink-0 rounded-full al-sesamo shadow-lg"></div><span class="uppercase">Sésamo</span></div>
-                <div class="flex items-center gap-3"><div class="h-4 w-4 shrink-0 rounded-full al-altramuces shadow-lg"></div><span class="uppercase">Altramuces</span></div>
+            <div class="grid grid-cols-2 gap-x-2 gap-y-4 text-xs md:text-sm font-medium text-zinc-400 md:grid-cols-4 lg:grid-cols-7">
+                <div class="flex items-center gap-2"><div class="h-3 w-3 shrink-0 rounded-full al-crustaceos"></div><span class="uppercase">Crustáceos</span></div>
+                <div class="flex items-center gap-2"><div class="h-3 w-3 shrink-0 rounded-full al-soja"></div><span class="uppercase">Soja</span></div>
+                <div class="flex items-center gap-2"><div class="h-3 w-3 shrink-0 rounded-full al-pescado"></div><span class="uppercase">Pescado</span></div>
+                <div class="flex items-center gap-2"><div class="h-3 w-3 shrink-0 rounded-full al-gluten"></div><span class="uppercase">Gluten</span></div>
+                <div class="flex items-center gap-2"><div class="h-3 w-3 shrink-0 rounded-full al-mostaza"></div><span class="uppercase">Mostaza</span></div>
+                <div class="flex items-center gap-2"><div class="h-3 w-3 shrink-0 rounded-full al-huevos"></div><span class="uppercase">Huevos</span></div>
+                <div class="flex items-center gap-2"><div class="h-3 w-3 shrink-0 rounded-full al-cacahuetes"></div><span class="uppercase">Cacahuetes</span></div>
+                <div class="flex items-center gap-2"><div class="h-3 w-3 shrink-0 rounded-full al-frutos"></div><span class="uppercase">Frutos Secos</span></div>
+                <div class="flex items-center gap-2"><div class="h-3 w-3 shrink-0 rounded-full al-apio"></div><span class="uppercase">Apio</span></div>
+                <div class="flex items-center gap-2"><div class="h-3 w-3 shrink-0 rounded-full al-moluscos"></div><span class="uppercase">Moluscos</span></div>
+                <div class="flex items-center gap-2"><div class="h-3 w-3 shrink-0 rounded-full al-leche"></div><span class="uppercase">Leche</span></div>
+                <div class="flex items-center gap-2"><div class="h-3 w-3 shrink-0 rounded-full al-sulfitos"></div><span class="uppercase">Sulfitos</span></div>
+                <div class="flex items-center gap-2"><div class="h-3 w-3 shrink-0 rounded-full al-sesamo"></div><span class="uppercase">Sésamo</span></div>
+                <div class="flex items-center gap-2"><div class="h-3 w-3 shrink-0 rounded-full al-altramuces"></div><span class="uppercase">Altramuces</span></div>
             </div>
         </section>
 
     </main>
 
     <!-- MENÚ INFERIOR FLOTANTE -->
-    <nav class="fixed bottom-0 z-50 w-full border-t border-neutral-800 bg-neutral-950/90 pb-safe shadow-[0_-10px_40px_rgba(0,0,0,0.5)] backdrop-blur-md">
-        <div class="mx-auto flex w-full max-w-6xl items-center justify-center gap-16 p-4">
-            <a href="/" class="flex flex-col items-center text-neutral-500 transition-colors hover:text-blood-500 active:scale-95">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                <span class="mt-1 font-heading text-[0.65rem] font-bold uppercase tracking-widest">Inicio</span>
+    <div class="fixed bottom-6 w-full flex justify-center z-50 pointer-events-none">
+        <nav class="pointer-events-auto bg-red-500 text-white px-8 py-3 rounded-full flex gap-6 items-center shadow-[0_0_25px_rgba(239,68,68,0.5)] font-bold text-sm tracking-widest uppercase">
+            <a href="/" class="flex items-center gap-2 hover:text-black transition-colors">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                Inicio
             </a>
-            
-            <a href="#leyenda-alergenos" class="flex flex-col items-center text-neutral-500 transition-colors hover:text-blood-500 active:scale-95">
-                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <span class="mt-1 font-heading text-[0.65rem] font-bold uppercase tracking-widest">Alérgenos</span>
+            <span class="text-white/50">|</span>
+            <a href="#alergenos" class="flex items-center gap-2 hover:text-black transition-colors">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Alérgenos
             </a>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
 </body>
 </html>
