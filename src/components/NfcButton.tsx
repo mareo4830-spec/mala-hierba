@@ -10,7 +10,7 @@ export default function NfcButton() {
       className="fixed bottom-5 left-1/2 z-40 -translate-x-1/2"
     >
       <a
-        href="#carta"
+        href="/public/carta.html"
         onClick={(e) => {
           e.preventDefault();
           document.getElementById('carta')?.scrollIntoView({ behavior: 'smooth' });
