@@ -59,13 +59,13 @@ export default function MenuPreview() {
           </div>
 
           <motion.div variants={fadeUp} className="mt-12 flex justify-center">
-            <button
-              onClick={() => alert('La carta completa estará disponible próximamente.')}
-              className="group flex items-center gap-2 rounded-xl border-2 border-blood-600 px-8 py-4 font-heading text-base font-semibold uppercase tracking-wide text-blood-500 transition-all duration-200 hover:bg-blood-600 hover:text-white active:scale-95"
-            >
-              Cargar la carta completa
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-            </button>
+            <a
+  href="/carta.html"
+  className="group flex items-center gap-2 rounded-xl border-2 border-blood-600 px-8 py-4 font-heading text-base font-semibold uppercase tracking-wide text-blood-500 transition-all hover:bg-blood-600 hover:text-white"
+>
+  Cargar la carta completa
+  <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+</a>
           </motion.div>
         </motion.div>
       </div>
