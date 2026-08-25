@@ -9,14 +9,13 @@ export default function NfcButton() {
       transition={{ delay: 1, duration: 0.6, ease: 'easeOut' }}
       className="fixed bottom-5 left-1/2 z-40 -translate-x-1/2"
     >
-      <a
-        href="/public/carta.html"
-        onClick={(e) => {
-          e.preventDefault();
-          document.getElementById('carta')?.scrollIntoView({ behavior: 'smooth' });
-        }}
-        className="flex items-center gap-2 rounded-full bg-blood-600 px-7 py-4 font-heading text-sm font-bold uppercase tracking-wide text-white shadow-blood-glow-lg animate-pulse-glow transition-transform duration-200 hover:scale-105 active:scale-95"
-      >
+       <a
+  href="/carta.html"
+  className="flex items-center gap-2 rounded-full bg-blood-600 px-7 py-4 font-heading text-sm font-bold uppercase tracking-wide text-white shadow-blood-glow-lg animate-pulse-glow"
+>
+  <UtensilsCrossed size={18} />
+  Ver Carta y Pedir
+</a>
         <UtensilsCrossed size={18} />
         Ver Carta y Pedir
       </a>
